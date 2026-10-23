@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+  <rect width="640" height="400" fill="#0b0d14"/>
+  <g stroke="#eeece6" stroke-opacity=".12">
+    <path d="M0 110h640M0 210h640M0 290h640M0 330h640"/>
+  </g>
+  <text x="60" y="290" font-family="Georgia, serif" font-style="italic" font-size="230" fill="#eeece6">Aa</text>
+  <text x="380" y="150" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="700" font-size="64" fill="#c8f031">1.25</text>
+  <text x="380" y="215" font-family="ui-monospace, monospace" font-size="22" fill="#eeece6" opacity=".6">major third</text>
+  <rect x="380" y="250" width="200" height="10" rx="5" fill="#6b4cff"/>
+  <rect x="380" y="272" width="150" height="10" rx="5" fill="#6b4cff" opacity=".6"/>
+  <rect x="380" y="294" width="110" height="10" rx="5" fill="#6b4cff" opacity=".35"/>
+</svg>

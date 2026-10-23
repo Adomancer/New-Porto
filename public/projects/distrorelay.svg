@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 460">
+  <rect width="660" height="460" fill="#0b1b4d"/>
+  <rect x="50" y="46" width="560" height="300" rx="22" fill="#0f0f0f"/>
+  <circle cx="82" cy="74" r="7" fill="#eeece6" opacity=".25"/>
+  <circle cx="104" cy="74" r="7" fill="#eeece6" opacity=".25"/>
+  <circle cx="126" cy="74" r="7" fill="#c8f031"/>
+  <g font-family="ui-monospace, Consolas, monospace" font-size="17" fill="#eeece6">
+    <text x="80" y="128"><tspan fill="#c8f031">&gt;</tspan> distrorelay scan</text>
+    <text x="80" y="160" opacity=".55">ESP    \EFI\ubuntu  grubx64.efi</text>
+    <text x="80" y="188" opacity=".55">NVRAM  Boot0003  "ubuntu"</text>
+    <text x="80" y="216" opacity=".55">DISK   p5 ext4  120 GB  linux</text>
+    <text x="80" y="256"><tspan fill="#c8f031">&gt;</tspan> distrorelay uninstall --dry-run</text>
+    <text x="80" y="288"><tspan fill="#19c493">✓</tspan> backup verified on USB</text>
+    <text x="80" y="316"><tspan fill="#19c493">✓</tspan> plan: 3 steps, journal ready</text>
+  </g>
+  <g font-family="ui-sans-serif, system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="16" font-weight="700">
+    <rect x="50" y="370" width="125" height="44" rx="22" fill="#c8f031"/>
+    <text x="112.5" y="397" text-anchor="middle" fill="#0f0f0f">Backup</text>
+    <rect x="195" y="370" width="125" height="44" rx="22" fill="#6b4cff"/>
+    <text x="257.5" y="397" text-anchor="middle" fill="#fff">Uninstall</text>
+    <rect x="340" y="370" width="125" height="44" rx="22" fill="#12a07b"/>
+    <text x="402.5" y="397" text-anchor="middle" fill="#fff">Install</text>
+    <rect x="485" y="370" width="125" height="44" rx="22" fill="#eeece6"/>
+    <text x="547.5" y="397" text-anchor="middle" fill="#0f0f0f">Setup</text>
+  </g>
+</svg>

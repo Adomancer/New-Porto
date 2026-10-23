@@ -1,26 +1,171 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
+/* Dark mode is driven by data-theme on <html> (set before paint in layout.tsx). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---------- Palette "Paper & Signal" — swap these to re-skin the whole site ---------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --bg: #eeece6;
+  --fg: #0f0f0f;
+  --muted: #6d6a64;
+  --line: rgb(15 15 15 / 0.85);
+  --hairline: rgb(15 15 15 / 0.14);
+  --surface: #e3e0d8;
+  --ink: #0f0f0f; /* inverted surfaces */
+  --ink-fg: #eeece6;
+  --accent: #c8f031; /* lime highlight */
+  --accent-fg: #0f0f0f;
+  --violet: #6b4cff;
+  /* WebGL gradient stops (inside the giant letters): base, mid, flow, highlight */
+  --g1: #0b1b4d;
+  --g2: #6b4cff;
+  --g3: #12a07b;
+  --g4: #c8f031;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0d0d0c;
+  --fg: #eeece6;
+  --muted: #8b877f;
+  --line: rgb(238 236 230 / 0.8);
+  --hairline: rgb(238 236 230 / 0.13);
+  --surface: #181816;
+  --ink: #eeece6;
+  --ink-fg: #0d0d0c;
+  --accent: #c8f031;
+  --accent-fg: #0f0f0f;
+  --violet: #7c61ff;
+  --g1: #2a3fb0;
+  --g2: #8a6dff;
+  --g3: #19c493;
+  --g4: #d6ff4a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-hairline: var(--hairline);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-fg: var(--ink-fg);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-violet: var(--violet);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-geist-sans), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-pulse-dot: pulse-dot 2s ease-out infinite;
+}
+
+@keyframes pulse-dot {
+  0% {
+    box-shadow: 0 0 0 0 rgb(200 240 49 / 0.75);
+  }
+  100% {
+    box-shadow: 0 0 0 9px rgb(200 240 49 / 0);
   }
 }
 
+@keyframes marker-in {
+  from {
+    background-size: 0% 0.3em;
+  }
+}
+
+html {
+  background: var(--bg);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
+}
+
+/* Small uppercase mono labels used across the editorial grid */
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.45;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Highlighter swipe behind key words */
+.marker {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 100% 0.3em;
+}
+.marker-animate {
+  animation: marker-in 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
+/* Outlined type, built from eight offset shadows under a page-colored fill. Unlike
+   -webkit-text-stroke this never shows the overlapping contours inside variable-font glyphs. */
+.text-outline {
+  --o: 0.024em;
+  --d: 0.017em;
+  --c: var(--outline, var(--fg));
+  color: var(--outline-fill, var(--bg));
+  text-shadow:
+    var(--o) 0 var(--c),
+    calc(var(--o) * -1) 0 var(--c),
+    0 var(--o) var(--c),
+    0 calc(var(--o) * -1) var(--c),
+    var(--d) var(--d) var(--c),
+    calc(var(--d) * -1) var(--d) var(--c),
+    var(--d) calc(var(--d) * -1) var(--c),
+    calc(var(--d) * -1) calc(var(--d) * -1) var(--c);
+}
+
+/* GradientText: CSS gradient fill until (or unless) the WebGL canvas takes over */
+.gt-text {
+  background: linear-gradient(100deg, var(--g1), var(--g2) 35%, var(--g3) 70%, var(--g4));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: opacity 0.6s ease;
+}
+[data-gl="on"] > .gt-text {
+  opacity: 0;
+}
+
+/* Theme switch: a circular reveal driven from ThemeToggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
