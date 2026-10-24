@@ -75,6 +75,20 @@
   }
 }
 
+/* Marquee loop for touch screens (see Marquee.tsx); duration and direction set inline */
+@keyframes marquee {
+  from {
+    transform: translate3d(-25%, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.marquee-track {
+  animation: marquee linear infinite;
+  will-change: transform;
+}
+
 @keyframes marker-in {
   from {
     background-size: 0% 0.3em;

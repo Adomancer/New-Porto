@@ -54,11 +54,13 @@ export function Header() {
 
   return (
     <>
-      {/* mix-blend-difference keeps the bar legible over light, dark and colored sections alike */}
-      <header className="label fixed inset-x-0 top-0 z-50 px-4 pt-4 text-white mix-blend-difference sm:px-8">
-        <div className="grid grid-cols-2 items-start gap-4 md:grid-cols-12">
+      {/* Phones get a solid bar so body text never shows through it; from md up,
+          mix-blend-difference keeps the floating bar legible over any section. */}
+      <header className="label fixed inset-x-0 top-0 z-50 border-b border-hairline bg-bg px-4 py-3 text-fg sm:px-8 md:border-0 md:bg-transparent md:pb-0 md:pt-4 md:text-white md:mix-blend-difference">
+        <div className="flex items-center justify-between gap-4 md:grid md:grid-cols-12 md:items-start">
           <a href="#top" className="md:col-span-3">
-            {site.firstName} {site.lastName}
+            {site.firstName} <span className="hidden sm:inline">{site.lastName}</span>
+            <span className="sm:hidden">{site.lastName.split(" ").at(-1)}</span>
             <br />
             <span className="opacity-60">Portfolio ©{site.year}</span>
           </a>
@@ -90,7 +92,7 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-start justify-end gap-5 md:col-span-2">
+          <div className="flex items-center justify-end gap-5 md:col-span-2 md:items-start">
             <ThemeToggle />
             <button
               type="button"
