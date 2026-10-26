@@ -40,6 +40,16 @@ export const marquee = {
 // Projects without an href are private (client work) and render without a link.
 export const projects = [
   {
+    title: "me-shell",
+    category: "Desktop shell",
+    year: "2026",
+    tags: ["QML", "Quickshell", "Hyprland", "Linux"],
+    summary:
+      "A retro-minimal Hyprland desktop shell in the monochrome look of Nothing and Teenage Engineering: bar, control panel, launcher, notifications and a CRT-style lockscreen in one Quickshell config.",
+    href: "https://github.com/Adomancer/me-shell",
+    image: "/projects/me-shell.webp",
+  },
+  {
     title: "DistroRelay",
     category: "Systems tool",
     year: "2026",
@@ -57,7 +67,7 @@ export const projects = [
     summary:
       "A self-hosted URL threat scanner that runs 100% locally — no third-party APIs. Separate threat-risk and security-posture verdicts, with every point backed by evidence and a fix.",
     href: "https://github.com/Adomancer/URLscanner",
-    image: "/projects/urlscanner.svg",
+    image: "/projects/urlscanner.png",
   },
   {
     title: "VidHelp",
@@ -77,16 +87,6 @@ export const projects = [
       "Project, ticket and calendar management system with an AI service. I was PIC of the calendar module and helped across other modules, front end and back end.",
     image: "/projects/krs.svg",
   },
-  {
-    title: "The Everlasting Love",
-    category: "Visual novel — team",
-    year: "2026",
-    tags: ["Ren'Py", "Python", "Game dev"],
-    summary:
-      "A fantasy-romance visual novel. I handled the programming and created the female main character.",
-    href: "https://github.com/haelahpx/TheeverlastingLove",
-    image: "/projects/everlasting-love.jpg",
-  },
 ];
 
 export const archive = { label: "Everything else lives on GitHub", href: "https://github.com/Adomancer" };
@@ -95,7 +95,7 @@ export const about = {
   statement:
     "I'm a full-stack developer who thinks like an attacker. I build the whole thing — database to UI — and keep asking how it could **break**, so it **doesn't**.",
   bio: [
-    "I'm graduating in December 2026 with a B.Sc. in Information Technology from President University. Along the way I've shipped client apps for real businesses, team projects from back end to front end, and a visual novel.",
+    "I'm graduating in December 2026 with a B.Sc. in Information Technology from President University. Along the way I've shipped client apps for real businesses, team projects from back end to front end, and my own Hyprland desktop shell.",
     "My favourite projects sit where development meets security: a URL threat scanner that never sends your links to a third party, and a dual-boot toolkit careful enough to refuse to run without a verified backup.",
   ],
   // Typed out by the terminal next to the bio. "cmd" lines are typed, "out" and "ok" lines are printed.
@@ -120,7 +120,7 @@ export const about = {
 export const stats = [
   { value: 5, suffix: "", label: "Featured projects" },
   { value: 2, suffix: "", label: "Client projects" },
-  { value: 320, suffix: "+", label: "Commits" },
+  { value: 430, suffix: "+", label: "Commits" },
   { value: 36, suffix: "", label: "Repos contributed" },
 ];
 
